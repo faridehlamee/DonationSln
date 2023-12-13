@@ -1,0 +1,26 @@
+
+@page "/success/{transId}/{date}/{notes}/{accountNo}"
+
+<div class="container mt-5">
+    <h1 class="text-success">Success Page</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">Data including:</p>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>TransId:</strong> @TransId</li>
+                <li class="list-group-item"><strong>Date:</strong> @Date</li>
+                <li class="list-group-item"><strong>Notes:</strong> @Notes</li>
+                <li class="list-group-item"><strong>Account No:</strong> @AccountNo</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string? TransId { get; set; }
+    [Parameter] public string? Date { get; set; }
+    [Parameter] public string? Notes { get; set; }
+    [Parameter] public string? AccountNo { get; set; }
+
+}

@@ -1,0 +1,96 @@
+@page "/reportdonorstaxreceipts"
+@attribute [Authorize(Roles = "Admin")]
+@using DonationBlazorServerSide.Data
+@using DonationModel.Model
+@inject DonationService donationService
+@inject ContactService contactService
+@* @inject Microsoft.JSInterop.IJSRuntime JSRuntime *@
+
+
+<h1>Donations</h1>
+
+<div class="form-group">
+    <label for="AccountNo" class="form-label">Select Contact</label>
+    <InputSelect id="AccountNo" class="form-control" @bind-Value="selectedAccountNo" @onchange="FilterDonations">
+        @foreach (var contact in contactsForSelectoptions!)
+        {
+            <option value="@contact.AccountNo">@($"{contact.FirstName} {contact.LastName}")</option>
+        }
+    </InputSelect>
+    @if (selectedAccountNo == 0)
+    {
+        <div class="text-danger">Please select a contact.</div>
+    }
+</div>
+
+@if (donations == null) {
+  <p><em>Loading...</em></p>
+} else {
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>TransId</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Notes</th>
+            <th>Contact</th>
+            <th>Transaction Type</th>
+            <th>Payment Method</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in donations)
+        {
+            <tr>
+                <td>@item.TransId</td>
+                <td>@item.Date.ToString("dd-MMM-yy")</td>
+                <td>@item.Amount</td>
+                <td>@item.Notes</td>
+                <td>@item.Contact!.FirstName @item.Contact!.LastName</td>
+                <td>@item.TransactionType!.Name</td>
+                <td>@item.PaymentMethod!.Name</td>
+           </tr>
+        }
+    </tbody>
+</table>
+}
+
+@code {
+    List<Donation>? donations;
+    private Donation donation = new Donation();
+    List<Contact>? contactsForSelectoptions;
+
+        // Create a new property for AccountNo
+    private int selectedAccountNo;
+
+    protected override async Task OnInitializedAsync()    
+    {
+        contactsForSelectoptions = await contactService.GetContactsAsync();
+        await LoadDonationsAsync();
+    }
+
+    private async Task LoadDonationsAsync()
+    {
+        if (selectedAccountNo != 0){
+            donations = await donationService.GetDonationsContactAsync(donation.AccountNo);
+        }
+        else
+        {
+            donations = await donationService.GetDonationsAsync();
+        }
+    }
+
+    private async Task FilterDonations(ChangeEventArgs e)
+    {
+
+        selectedAccountNo = int.Parse(e.Value!.ToString()!);
+        
+        @* // Use JavaScript interop to log to the browser console
+        await JSRuntime.InvokeVoidAsync("console.log", $"Filtering donations for AccountNo: {selectedAccountNo}"); *@
+
+
+        await LoadDonationsAsync();
+        StateHasChanged();
+    }
+}

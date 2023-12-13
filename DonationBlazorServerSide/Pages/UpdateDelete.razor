@@ -1,0 +1,108 @@
+@page "/updel/{id}/{mode}"
+@attribute [Authorize(Roles = "Admin")]
+@using DonationBlazorServerSide.Data
+@using DonationModel.Model
+@inject ContactService contactService
+@inject NavigationManager NavManager
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+<PageTitle>Update/Delete Contact</PageTitle>
+
+@if (contact != null && Mode == "edit") // Update
+{
+    <p>Update Contact with Account No == @Id</p>
+    <EditForm Model="@contact" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="FirstName">First Name:</label>
+            <InputText id="FirstName" class="form-control" @bind-Value="contact.FirstName" />
+        </div>
+
+        <div class="form-group">
+            <label for="LastName">Last Name:</label>
+            <InputText id="LastName" class="form-control" @bind-Value="contact.LastName" />
+        </div>
+
+        <div class="form-group">
+            <label for="School">Email:</label>
+            <InputText id="School" class="form-control" @bind-Value="contact.Email" />
+        </div>
+
+        <div class="form-group">
+            <label for="Street">Street:</label>
+            <InputText id="Street" class="form-control" @bind-Value="contact.Street" />
+        </div>
+
+         <div class="form-group">
+            <label for="City">City:</label>
+            <InputText id="City" class="form-control" @bind-Value="contact.City" />
+        </div>
+
+        <div class="form-group">
+            <label for="PostalCode">PostalCode:</label>
+            <InputText id="PostalCode" class="form-control" @bind-Value="contact.PostalCode" />
+        </div>
+
+        <div class="form-group">
+            <label for="Country">Country:</label>
+            <InputText id="Country" class="form-control" @bind-Value="contact.Country" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </EditForm>
+
+    @code {
+        private async Task HandleValidSubmit()
+        {
+            string modifiedBy = HttpContextAccessor.HttpContext!.User.Identity!.Name!;
+            await contactService.UpdateContactAsync(contact!.AccountNo, contact, modifiedBy);
+            NavManager.NavigateTo("/contacts");
+        }
+    }
+}
+else if (contact != null && Mode == "del")
+{ 
+    
+    <fieldset>
+        <legend>Contact Information</legend>
+        <p>Account No: @Id</p>
+        <p>First Name: @contact.FirstName</p>
+        <p>Last Name: @contact.LastName</p>
+        <p>Email: @contact.Email</p>
+        <p>Street: @contact.Street</p>
+        <p>City: @contact.City</p>
+        <p>PostalCode: @contact.PostalCode</p>
+        <p>Country: @contact.Country</p>
+    </fieldset>
+    <p>Delete Contact with Account No == @Id</p>
+    <p>Are you sure?</p>
+    <button type="button" class="btn btn-danger" @onclick="HandleDeleteStudent">Delete</button>
+    @code {
+    private async Task HandleDeleteStudent()
+    {
+        await contactService.DeleteContactAsync(contact!.AccountNo);
+        NavManager.NavigateTo("/contacts");
+    }
+}
+}
+else
+{
+    <p>Contact with ID == @Id not found</p>
+}
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    [Parameter]
+    public string? Mode { get; set; }
+    private Contact? contact = new Contact();
+
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        contact = await contactService.GetContactByIdAsync(intId);
+    }
+}

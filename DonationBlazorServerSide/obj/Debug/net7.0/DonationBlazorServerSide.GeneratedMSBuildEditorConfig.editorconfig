@@ -1,0 +1,107 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DonationBlazorServerSide
+build_property.RootNamespace = DonationBlazorServerSide
+build_property.ProjectDir = C:\4602\Week08-Assignment2\DonationSln\DonationBlazorServerSide\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\4602\Week08-Assignment2\DonationSln\DonationBlazorServerSide
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/AddContact.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkQ29udGFjdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/AddDonation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRG9uYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/Contacts.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/Donations.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9uYXRpb25zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/ReportDonorsTaxReceipt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0RG9ub3JzVGF4UmVjZWlwdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/ReportYearToDate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0WWVhclRvRGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/Success.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VjY2Vzcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/UpdateDeleteDonation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlRGVsZXRlRG9uYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/UpdateDeleteDonationJustIds.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlRGVsZXRlRG9uYXRpb25KdXN0SWRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Shared/LoginDisplay.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luRGlzcGxheS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/UpdateDelete.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlRGVsZXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-gxp0pe1r0y
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Shared/Footer.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEZvb3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-i9l2do67e6
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-dz6hb4kmvb
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-q9r2m3chj7
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Areas/Identity/Pages/Account/LogOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dPdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/4602/Week08-Assignment2/DonationSln/DonationBlazorServerSide/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

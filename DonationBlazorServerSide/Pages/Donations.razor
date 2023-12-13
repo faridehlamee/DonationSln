@@ -1,0 +1,56 @@
+﻿@page "/donations"
+@attribute [Authorize(Roles = "Admin")]
+@using DonationBlazorServerSide.Data
+@using DonationModel.Model
+@inject DonationService donationService
+@* @inject ContactService contactService *@
+
+<h1>Donations</h1>
+
+@if (donations == null) {
+  <p><em>Loading...</em></p>
+} else {
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>TransId</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Notes</th>
+            <th>Contact</th>
+            <th>Transaction Type</th>
+            <th>Payment Method</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in donations)
+        {
+            <tr>
+                <td>@item.TransId</td>
+                <td>@item.Date.ToString("dd-MMM-yy")</td>
+                <td>@item.Amount</td>
+                <td>@item.Notes</td>
+                <td>@item.Contact!.FirstName @item.Contact!.LastName</td>
+                <td>@item.TransactionType!.Name</td>
+                <td>@item.PaymentMethod!.Name</td>
+                <td><a class="btn btn-success btn-sm" href="/updeldonation/@item.TransId/edit">Edit</a></td>
+                <td><a class="btn btn-danger btn-sm" href="/updeldonation/@item.TransId/del">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+
+@code {
+  List<Donation>? donations;
+
+  protected override async Task OnInitializedAsync() {
+    donations = await donationService.GetDonationsAsync();
+  }
+
+}
+
+

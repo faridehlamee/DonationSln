@@ -1,0 +1,108 @@
+@page "/updeldonationJustIds/{id}/{mode}"
+@attribute [Authorize(Roles = "Admin")]
+@using DonationBlazorServerSide.Data
+@using DonationModel.Model
+@inject DonationService donationService
+@inject NavigationManager NavManager
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+<PageTitle>Update/Delete Donation</PageTitle>
+
+@if (donation != null && Mode == "edit") // Update
+{
+    <p>Update Donation with Trans Id == @Id</p>
+<EditForm Model="@donation" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+  <div class="form-group">
+    <label for="TransId">TransId</label>
+    <InputNumber id="TransId" class="form-control" @bind-Value="donation.TransId" />
+  </div>
+
+  <div class="form-group">
+    <label for="Date">Date</label>
+    <InputDate id="Date" class="form-control" @bind-Value="donation.Date" />
+  </div>
+
+  <div class="form-group">
+    <label for="Amount">Amount</label>
+    <InputNumber id="Amount" class="form-control" @bind-Value="donation.Amount" />
+  </div>
+
+  <div class="form-group">
+    <label for="Notes">Notes:</label>
+    <InputText id="Notes" class="form-control" @bind-Value="donation.Notes" />
+  </div>
+
+  <div class="form-group">
+    <label for="AccountNo">Account No</label>
+    <InputNumber id="AccountNo" class="form-control" @bind-Value="donation.AccountNo" />
+  </div>
+
+  <div class="form-group">
+    <label for="TransactionTypeId">Transaction Type</label>
+    <InputNumber id="TransactionTypeId" class="form-control" @bind-Value="donation.TransactionTypeId" />
+  </div>
+
+  <div class="form-group">
+    <label for="PaymentMethodId">Payment Method</label>
+    <InputNumber id="PaymentMethodId" class="form-control" @bind-Value="donation.PaymentMethodId" />
+  </div>
+
+
+        <button type="submit" class="btn btn-primary">Update</button>
+</EditForm>
+
+    @code {
+        private async Task HandleValidSubmit()
+        {
+            string modifiedBy = HttpContextAccessor.HttpContext!.User.Identity!.Name!;
+            await donationService.UpdateDonationAsync(donation!.TransId, donation, modifiedBy);
+            NavManager.NavigateTo("/donations");
+        }
+    }
+}
+else if (donation != null && Mode == "del")
+{ 
+    
+    <fieldset>
+        <legend>Donation Information</legend>
+        <p>Trans Id: @Id</p>
+        <p>First Name: @donation.Date</p>
+        <p>Last Name: @donation.Amount</p>
+        <p>Email: @donation.Notes</p>
+        <p>Street: @donation.AccountNo</p>
+        <p>City: @donation.TransactionTypeId</p>
+        <p>PostalCode: @donation.PaymentMethodId</p>
+    </fieldset>
+    <p>Delete Donation with TransId == @Id</p>
+    <p>Are you sure?</p>
+    <button type="button" class="btn btn-danger" @onclick="HandleDeleteStudent">Delete</button>
+    @code {
+    private async Task HandleDeleteStudent()
+    {
+        await donationService.DeleteDonationAsync(donation!.TransId);
+        NavManager.NavigateTo("/donations");
+    }
+}
+}
+else
+{
+    <p>Contact with ID == @Id not found</p>
+}
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    [Parameter]
+    public string? Mode { get; set; }
+    private Donation? donation = new Donation();
+
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        donation = await donationService.GetDonationByIdAsync(intId);
+    }
+}
